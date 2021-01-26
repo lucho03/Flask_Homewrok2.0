@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="topnav">
+        <a class="active" href="\">Home</a>
+        <a href="\about">About</a>
+        <a href="\register">Register</a>
+        <a href="\login">Log In</a>
+    </div>
+    {% for post in posts %}
+        <h1>{{ post.title }}</h1>
+        <p>By {{ post.author }} on {{ post.date }}</p>
+        <p>{{ post.content }}</p>
+    {% endfor %}
+{% endblock content %}

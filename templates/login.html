@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="topnav">
+        <a href="\">Home</a>
+        <a href="\about">About</a>
+        <a href="\register">Register</a>
+        <a class="active" href="\login">Log In</a>
+    </div>
+    <div class="registration">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="place">
+                <legend class="border-bottom mb-5">Log In</legend>
+                <div class="place">
+                    {{ form.username.label(class="form-control-label") }}
+                    
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is is-invalid") }}
+                        <div class="errors">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="place">
+                    {{ form.password.label(class="form-control-label") }}
+                    
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is is-invalid") }}
+                        <div class="errors">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="place">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

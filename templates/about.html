@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="topnav">
+        <a href="\">Home</a>
+        <a class="active" href="\about">About</a>
+        <a href="\register">Register</a>
+        <a href="\login">Log In</a>
+    </div>
+    {% if title %}
+        <h1>Title: {{ title }}</h1>
+    {% else %}
+        <h1>Nqqq title</h1>
+    {% endif %}
+{% endblock content %}
