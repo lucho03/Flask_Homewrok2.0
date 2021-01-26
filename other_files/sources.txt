@@ -1,0 +1,8 @@
+Flask:
+https://flask.palletsprojects.com/en/1.1.x/
+
+Setup environment for flask run:
+https://stackoverflow.com/questions/51119495/how-to-setup-environment-variables-for-flask-run-on-windows
+
+Debug mode on Flask:
+https://stackoverflow.com/questions/17309889/how-to-debug-a-flask-app
