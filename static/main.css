@@ -2,7 +2,12 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-  
+
+.errors {
+    text-align: center;
+    color: brown;
+}
+
 .topnav {
     overflow: hidden;
     background-color: #333;
