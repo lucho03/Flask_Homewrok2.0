@@ -1,15 +1,15 @@
 from flask import Flask, render_template, url_for, flash, redirect
-from forms import Registration, Login
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '0\xa5\x87-\xad\xa2z\x10d\xaf\x9br\xf8\x9f\x0c\xcbt\xe5\x83\x98'
+app.config['SECRET_KEY'] = 'p\xee\xeb>\x077\xef\x0e\x87P\xbe\xbcV\xcaVv\x90\xc2\xe8\x1eB*C\xf5'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///main.db'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
 from database import User, Post
+from forms import Registration, Login
 
 posts = [
     {
