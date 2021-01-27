@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, current_user
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'p\xee\xeb>\x077\xef\x0e\x87P\xbe\xbcV\xcaVv\x90\xc2\xe8\x1eB*C\xf5'
@@ -33,6 +33,8 @@ def about():
 
 @app.route('/register', methods=['GET', 'POST'])
 def regiter():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = Registration()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -47,7 +49,7 @@ def regiter():
 def login():
     form = Login()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(username=form.username.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
             return redirect(url_for('home'))
