@@ -1,2 +1,3 @@
 # Flask_Homewrok2.0
-For 28.01
+Homework for 28.01
+See other_files\setup.txt
