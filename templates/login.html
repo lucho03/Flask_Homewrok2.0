@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="topnav">
+    <div class="navigation_bar">
         <a href="\">Home</a>
         <a href="\about">About</a>
         <a href="\register">Register</a>
@@ -9,8 +9,8 @@
     <div class="registration">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset class="place">
-                <legend class="border-bottom mb-5">Log In</legend>
+            <fieldset">
+                <legend class="legend">Log In</legend>
                 <div class="place">
                     {{ form.username.label(class="form-control-label") }}
                     
