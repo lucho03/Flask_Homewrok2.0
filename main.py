@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, login_user, current_user
+from flask_login import LoginManager, login_user, current_user, logout_user
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'p\xee\xeb>\x077\xef\x0e\x87P\xbe\xbcV\xcaVv\x90\xc2\xe8\x1eB*C\xf5'
@@ -58,3 +58,5 @@ def login():
         else:
             flash('Unsuccessfull login!', 'danger')
     return render_template('login.html', form=form)
+
+@app.rooute('\logout')
