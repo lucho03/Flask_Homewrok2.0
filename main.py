@@ -59,4 +59,7 @@ def login():
             flash('Unsuccessfull login!', 'danger')
     return render_template('login.html', form=form)
 
-@app.rooute('\logout')
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
