@@ -8,3 +8,4 @@ install: py -3 -m venv venv
 
 setup: $env:FLASK_ENV='development' (set FLASK_ENV=development)
        $env:FLASK_APP='main.py' (set FLASK_APP=main.py)
+       flask run
