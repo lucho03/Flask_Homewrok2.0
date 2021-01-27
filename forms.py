@@ -12,7 +12,7 @@ class Registration(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
-            raise ValidationError('This name is already exists! Choose different one.')
+            raise ValidationError('This name is already exists! Choose different one')
 
 class Login(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min = 2, max = 30)])
