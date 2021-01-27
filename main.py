@@ -47,9 +47,5 @@ def regiter():
 def login():
     form = Login()
     if form.validate_on_submit():
-        if form.username.data:
-            flash('You are logged in!', 'success')
-            return redirect(url_for('home'))
-        else:
-            flash('Unsuccessfull login!', 'danger')
+        flash('Unsuccessfull login!', 'danger')
     return render_template('login.html', form=form)
