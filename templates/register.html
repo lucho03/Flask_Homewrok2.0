@@ -60,6 +60,15 @@
                         {{ form.confirm_password(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+                <div>
+                    {{ form.image.label() }}<br>
+                    {{ form.image(class="form-control-file") }}
+                    {% if form.image.errors %}
+                        {% for error in form.image.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </fieldset>
             <div class="place">
                 {{ form.submit(class="btn btn-outline-info") }}
