@@ -18,7 +18,7 @@
         <p>By {{ post.author.username }} on {{ post.date.strftime('%Y-%m-%d') }}</p>
         <p>{{ post.content }}</p>
         {% if current_user.is_authenticated and current_user.id == post.author.id %}
-            <button onclick=""><a href="{{ url_for('post', post_id=post.id) }}">Change</a></button>
+            <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('post', post_id=post.id) }}">Change</a>
             <br>
             <br>
         {% endif %}
