@@ -37,6 +37,11 @@ def about():
 
 def save_image(form_image):
     random = secrets.token_hex(8)
+    f_name, f_ext = os.path.splitext(form_image.filename)
+    image_fn = random + f_ext
+    image_path = os.path.join(app.root_path, 'static/pics', image_fn)
+    form_image.save(image_path)
+    return image_fn
 
 @app.route('/register', methods=['GET', 'POST'])
 def regiter():
@@ -45,7 +50,11 @@ def regiter():
     form = Registration()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, password=hashed_password)
+        if form.image.data:
+            image = save_image(form.image.data)
+            user = User(username=form.username.data, password=hashed_password, image=image)
+        else:
+            user = User(username=form.username.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
         flash(f'{form.username.data} is  created susccessfully!', 'success')
