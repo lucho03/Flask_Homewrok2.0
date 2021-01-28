@@ -1,4 +1,4 @@
-For Windows
+For Windows install Python3.9.1
 install: py -3 -m venv venv
          venv\Scripts\activate
          pip install flask
