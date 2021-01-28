@@ -15,7 +15,7 @@ login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
 from database import User, Post
-from forms import Registration, Login
+from forms import Registration, Login, Post
 
 posts = [
     {
