@@ -35,7 +35,8 @@ def home():
 def about():
     return render_template('about.html', title='About you')
 
-def save
+def save_image(form_image):
+    random = secrets.token_hex(8)
 
 @app.route('/register', methods=['GET', 'POST'])
 def regiter():
