@@ -85,3 +85,8 @@ def logout():
 def account():
     image_file = url_for('static', filename='pics/' + current_user.image)
     return render_template('account.html', image_file=image_file)
+
+@app.route('/post/<int:post_id>')
+def post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('post.html', post=post)  
