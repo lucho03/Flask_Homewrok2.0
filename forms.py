@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 from database import User
@@ -6,6 +7,7 @@ from database import User
 class Registration(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min = 2, max = 30)])
     password = PasswordField('Password', validators=[DataRequired()])
+    image = FileField('Picture', validators=[FileAllowed(['png', 'jpg'])])
     confirm_password = PasswordField('Confirm password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign up')
 
