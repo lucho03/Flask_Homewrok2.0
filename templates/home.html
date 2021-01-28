@@ -14,10 +14,13 @@
     </div>
     {% for post in posts %}
         <img class="rounded-circle" src="{{ url_for('static', filename='pics' + post.author.image) }}">
-        <h1>
-            <a href="{{ url_for('post', post_id=post.id) }}">{ post.title }}</a>
-        </h1>
+        <h1><a>{{ post.title }}</a></h1>
         <p>By {{ post.author.username }} on {{ post.date.strftime('%Y-%m-%d') }}</p>
         <p>{{ post.content }}</p>
+        {% if current_user.is_authenticated and current_user.id == post.author.id %}
+            <button onclick=""><a href="{{ url_for('post', post_id=post.id) }}">Change</a></button>
+            <br>
+            <br>
+        {% endif %}
     {% endfor %}
 {% endblock content %}
