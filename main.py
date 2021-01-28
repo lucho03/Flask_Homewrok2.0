@@ -15,27 +15,22 @@ login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
 from database import User, Post
-from forms import Registration, Login, Post
-
-posts = [
-    {
-        'author': 'Az',
-        'title': 'Proba',
-        'content': 'nqkwo sydyrzhanie',
-        'date': '26.01.2021'
-    }
-]
+from forms import Registration, Login, Publish
 
 @app.route('/')
 @app.route('/home')
 def home():
+    posts = Post.query.all()
     return render_template('home.html', posts=posts)
 
 @app.route('/about', methods=['GET', 'POST'])
 @login_required
 def about():
-    form = Post()
+    form = Publish()
     if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
         flash('Post has been created!', 'success')
         return redirect(url_for('home'))
     return render_template('about.html', form=form)
