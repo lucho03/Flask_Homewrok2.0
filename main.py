@@ -31,9 +31,14 @@ posts = [
 def home():
     return render_template('home.html', posts=posts)
 
-@app.route('/about')
+@app.route('/about', methods=['GET', 'POST'])
+@login_required
 def about():
-    return render_template('about.html', title='About you')
+    form = Post()
+    if form.validate_on_submit():
+        flash('Post has been created!', 'success')
+        return redirect(url_for('home'))
+    return render_template('about.html', form=form)
 
 def save_image(form_image):
     random = secrets.token_hex(8)
